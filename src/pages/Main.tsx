@@ -6,8 +6,9 @@ import axios from 'axios';
 import '../css/Login.css';
 import { getCookie, setCookie } from "../utils/cookie";
 import Header from '../components/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Login() {
+function Main() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +61,11 @@ function Login() {
         if (resultCode === "STI01") {
           setCookie("accessToken", response.headers.accesstoken, 1);
           setCookie("lastLoginTime", response.headers.lastlogintime, 1);
+          // //@ts-ignore
+          // setUserInfoV((prevValue) => ({
+          //   ...prevValue,
+          //   userName: response.data.result.userName
+          // }));
           navigate("/main");
         }
         else if (resultCode === "MBB01") {
@@ -110,61 +116,20 @@ function Login() {
     };
 
     return (
-      <div className='row justify-content-center'>
-            <div className='col-6 text-center'>
-                <div className="login-content" onKeyDown={handleKeyDown}>
-                  <input
-                    className='loginId'
-                    id='loginId'
-                    placeholder="  ID"
-                    maxLength={30}
-                    onChange={(e) => {
-                      setLoginId(e.currentTarget.value);
-                    }}
-                    type={'text'} />
-                  <div className="pwd-eye-wrap">
-                    <input
-                      className='loginPassword'
-                      type="text"
-                      id='loginPassword'
-                      placeholder="  パスワード"
-                      maxLength={20}
-                      onChange={(e) => {
-                        setLoginPw(e.currentTarget.value);
-                      }} />
-                  </div>
-                  <button
-                    className='login-btn'
-                    type="submit"
-                    onClick={() => {
-                      login(loginId, loginPw);
-                    }}>
-                    로그인
-                  </button>
-                  <div className='login-findUserInfo'>
-                    <a href="/forgetId">ID찾기</a>
-                    <span className='login-and'> | </span>
-                    <a href="/forgetPassword">PASSWORD찾기</a>
-                  </div>
-                </div>
-                <div className="loginJoin">
-                <span>
-                  <a className="signup-btn" href="/join">회원가입</a>
-                </span>
-              </div>
-              </div>
-        </div>
+      <div>
+      </div>
     );
   }
   
   return (
     <div>
       <Header/>
-      <div className='login'>
-      {getCookie("accessToken") && getCookie("lastLoginTime")? null :<LoginInput/> }
+      <div className='main'>
+      {/* {getCookie("accessToken") && getCookie("lastLoginTime")?<NotFound />:<LoginInput/> }  */}
+        <LoginInput/> 
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Main;
