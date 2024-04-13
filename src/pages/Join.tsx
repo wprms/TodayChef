@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import axios from 'axios';
 import '../css/Join.css';
+import Header from '../components/Header';
 import {
     ResponseData,
 } from '../services/apiTypes';
-
 
 function Join() {
   const [id, setId] = useState('');
@@ -126,36 +126,36 @@ function Join() {
   };
 
 return(
-
-  <div className="container joinContainer">
-      <div className="row joinRow">
+    <div className='row justify-content-center'>
+    <Header/>
+      <div className='col-6 text-center'>
             <div className="JoinMain">        
               <div>
-                  <p className="brText">ID<span className='imfortantEnter'>*</span></p>
+                  <div className="brText">ID<span className='imfortantEnter'>*</span></div>
                   <input className='joinTextName' maxLength={200} type={'text'} onChange={(e) => setId(e.target.value.replace(/　/g, '').replace(/ /g, ''))}/> 
               </div>
               <div>
-                  <p className="brText">Password<span className='imfortantEnter'>*</span></p>
+                  <div className="brText">Password<span className='imfortantEnter'>*</span></div>
                   <input className='joinTextName' maxLength={200} type={'text'} onChange={(e) => setPassword(e.target.value.replace(/　/g, '').replace(/ /g, ''))}/> 
               </div>
               <div>
-                  <p className="brText">メールアドレス<span className='imfortantEnter'>*</span></p>
+                  <div className="brText">Mail<span className='imfortantEnter'>*</span></div>
                   <input className='joinTextName' placeholder='example@todaychef.com' maxLength={50} type={'text'} onChange={(e) => setMail(e.target.value)}/> 
               </div>             
           </div>
           <div className="joinBottom">
               <button className='joinApplication' onClick={join}>                    
-                      送信
+                      송신
               </button>
               <button className='joinBackbtn' onClick={backToLogin}>                    
-                      ログイン画面に戻る
+                      로그인
               </button>
           </div>
       </div>
   </div>
 
-              );
-          };
+  );
+};
 
 
 export default Join;
