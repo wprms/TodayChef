@@ -142,9 +142,9 @@ function Login() {
                     로그인
                   </button>
                   <div className='login-findUserInfo'>
-                    <a href="/forgetId">ID찾기</a>
+                    <a href="/findId">ID찾기</a>
                     <span className='login-and'> | </span>
-                    <a href="/forgetPassword">PASSWORD찾기</a>
+                    <a href="/findPW">PASSWORD찾기</a>
                   </div>
                 </div>
                 <div className="loginJoin">
